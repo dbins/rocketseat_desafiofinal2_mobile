@@ -1,0 +1,38 @@
+{
+  "name": "pizzaria",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "react": "16.8.3",
+    "react-native": "0.59.9",
+    "react-native-gesture-handler": "^1.3.0",
+    "react-native-status-bar-height": "^2.3.1",
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^3.11.0",
+    "react-redux": "^7.1.0",
+    "reactotron-react-native": "^3.6.4",
+    "reactotron-redux": "^3.1.1",
+    "reactotron-redux-saga": "^4.2.2",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.4",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/runtime": "^7.4.5",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "metro-react-native-babel-preset": "^0.54.1",
+    "react-test-renderer": "16.8.3"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
