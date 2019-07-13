@@ -1,7 +1,7 @@
 package com.pizzaria;
 
 import com.facebook.react.ReactActivity;
-
+import android.content.Intent;
 public class MainActivity extends ReactActivity {
 
     /**

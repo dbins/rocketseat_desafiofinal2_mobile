@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "878310133679",
+    "firebase_url": "https://aplicativo-teste-350b8.firebaseio.com",
+    "project_id": "aplicativo-teste-350b8",
+    "storage_bucket": "aplicativo-teste-350b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878310133679:android:c690961123935b14",
+        "android_client_info": {
+          "package_name": "com.cadastro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878310133679-n440v380b04cd5pnjj8n93f4a1nkbrto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKG_5wBG5XgQXBZoz2NmKdI4CGd2IuJjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878310133679-n440v380b04cd5pnjj8n93f4a1nkbrto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878310133679:android:ab04c81200cb28ce",
+        "android_client_info": {
+          "package_name": "com.pizzaria"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878310133679-q9hd69ss6tn6fsgv8738j14e9pn59kso.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pizzaria",
+            "certificate_hash": "0fac248b77665972a335740629b9f0b0cf1325e9"
+          }
+        },
+        {
+          "client_id": "878310133679-n440v380b04cd5pnjj8n93f4a1nkbrto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKG_5wBG5XgQXBZoz2NmKdI4CGd2IuJjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878310133679-n440v380b04cd5pnjj8n93f4a1nkbrto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

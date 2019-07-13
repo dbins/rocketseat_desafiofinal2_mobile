@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Pizza Don Juan</string>
+	<string name="facebook_app_id">441553780022497</string>
+	<string name="fb_login_protocol_scheme">fb441553780022497</string>
 </resources>
