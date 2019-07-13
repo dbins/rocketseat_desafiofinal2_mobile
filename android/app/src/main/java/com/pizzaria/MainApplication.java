@@ -14,7 +14,7 @@ import com.facebook.CallbackManager;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.FacebookSdk;
-
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,7 +40,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNDeviceInfo(),
             new VectorIconsPackage(),
             new RNGestureHandlerPackage(),
-			new FBSDKPackage(mCallbackManager)
+			      new FBSDKPackage(mCallbackManager),
+            new RNGoogleSigninPackage()
       );
     }
 
