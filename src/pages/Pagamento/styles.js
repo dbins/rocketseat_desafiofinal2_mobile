@@ -1,6 +1,5 @@
-import { colors, metrics } from "../../styles";
-
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
+import { colors, metrics } from '../../styles';
 
 export const MeioPagamento = styled.TouchableOpacity`
   flex: 1;
@@ -44,6 +43,6 @@ export const Text = styled.Text`
 `;
 
 export const Loading = styled.ActivityIndicator.attrs({
-  size: "small",
-  color: colors.white
+  size: 'small',
+  color: colors.white,
 })``;

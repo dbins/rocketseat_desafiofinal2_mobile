@@ -17,6 +17,7 @@ import com.facebook.FacebookSdk;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import java.util.Arrays;
 import java.util.List;
+import android.content.Intent;
 
 public class MainApplication extends Application implements ReactApplication {
 	
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
       return mCallbackManager;
   }
 
+  
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
@@ -59,6 +61,7 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    AppEventsLogger.activateApp(this);
     SoLoader.init(this, /* native exopackage */ false);
   }
 }

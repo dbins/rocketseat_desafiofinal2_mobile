@@ -3,11 +3,11 @@
  */
 
 export const Types = {
-  ADD: "carrinho/ADD",
-  REMOVE: "carrinho/REMOVE",
-  CLEAR: "carrinho/CLEAR",
-  ADD_TO_ORDER: "carrinho/ADD_TO_ORDER",
-  FAILURE: "carrinho/FAILURE"
+  ADD: 'carrinho/ADD',
+  REMOVE: 'carrinho/REMOVE',
+  CLEAR: 'carrinho/CLEAR',
+  ADD_TO_ORDER: 'carrinho/ADD_TO_ORDER',
+  FAILURE: 'carrinho/FAILURE',
 };
 
 /**
@@ -21,12 +21,12 @@ export default function carrinho(state = INITIAL_STATE, action) {
     case Types.REMOVE:
       return {
         ...state,
-        items: [...state.items.filter(item => item !== action.payload.item)]
+        items: [...state.items.filter(item => item !== action.payload.item)],
       };
     case Types.CLEAR:
       return {
         ...state,
-        items: []
+        items: [],
       };
     default:
       return state;
@@ -40,17 +40,17 @@ export default function carrinho(state = INITIAL_STATE, action) {
 export const Creators = {
   carrinhoAdd: data => ({
     type: Types.ADD,
-    payload: { data }
+    payload: { data },
   }),
   carrinhoRemove: item => ({
     type: Types.REMOVE,
-    payload: { item }
+    payload: { item },
   }),
   carrinhoClear: data => ({
     type: Types.CLEAR,
-    payload: { data }
+    payload: { data },
   }),
   adicionarPedido: () => ({
-    type: Types.ADD_TO_ORDER
-  })
+    type: Types.ADD_TO_ORDER,
+  }),
 };

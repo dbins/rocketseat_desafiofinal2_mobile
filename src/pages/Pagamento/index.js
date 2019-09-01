@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Creators as PerfilActions } from "../../store/ducks/perfil";
+import { Creators as PedidoActions } from "../../store/ducks/pedido";
 import Container from "../../components/Container";
 import Header from "../../components/Header";
 import { ScrollView } from "react-native";
@@ -13,19 +13,11 @@ import { CreditCardInput } from "react-native-credit-card-input";
 
 class Pagamento extends Component {
   static propTypes = {
-    perfil: PropTypes.shape({
-      data: PropTypes.arrayOf(
-        PropTypes.shape({
-          order: PropTypes.shape({
-            id: PropTypes.number,
-            created_at: PropTypes.date,
-            valor: PropTypes.number
-          })
-        })
-      ),
-      loading: PropTypes.bool,
-      error: PropTypes.bool
-    }).isRequired
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func
+    }).isRequired,
+    pedidoRequest: PropTypes.func.isRequired,
+    setFormaPagamento: PropTypes.func.isRequired
   };
 
   componentWillMount() {}
@@ -42,6 +34,9 @@ class Pagamento extends Component {
 
   dinheiro = () => {
     //Finalizar o pedido
+    const { pedidoRequest, setFormaPagamento } = this.props;
+    setFormaPagamento("DINHEIRO");
+    pedidoRequest();
   };
 
   render() {
@@ -67,11 +62,11 @@ class Pagamento extends Component {
 }
 
 const mapStateToProps = state => ({
-  perfil: state.perfil
+  pedido: state.perfil
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(PerfilActions, dispatch);
+  bindActionCreators(PedidoActions, dispatch);
 
 export default connect(
   mapStateToProps,

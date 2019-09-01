@@ -19,3 +19,18 @@ export function* login(action) {
     yield put(LoginActions.loginFailure());
   }
 }
+
+export function* login_social(action) {
+  try {
+    const { user } = action.payload;
+
+    const { data } = yield call(api.post, "/sessions_social", user);
+    OnLogin(data.token.token);
+
+    yield put(LoginActions.loginSuccess());
+
+    navigate("Home");
+  } catch (err) {
+    yield put(LoginActions.loginFailure());
+  }
+}

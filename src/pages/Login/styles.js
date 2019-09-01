@@ -1,6 +1,5 @@
-import { colors, metrics } from "../../styles";
-
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
+import { colors, metrics } from '../../styles';
 
 export const ImageBackground = styled.ImageBackground`
   width: 100%;
@@ -28,7 +27,7 @@ export const ContainerLogo = styled.View`
 export const Form = styled.View``;
 
 export const Input = styled.TextInput.attrs({
-  placeholderTextColor: colors.regular
+  placeholderTextColor: colors.regular,
 })`
   background: ${colors.white};
   border-radius: ${metrics.baseRadius * 2};
@@ -61,6 +60,6 @@ export const LinkText = styled.TouchableOpacity`
 `;
 
 export const Loading = styled.ActivityIndicator.attrs({
-  size: "small",
-  color: colors.white
+  size: 'small',
+  color: colors.white,
 })``;

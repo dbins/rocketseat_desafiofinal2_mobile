@@ -31,7 +31,9 @@ export function* getCEP(action) {
 
 export function* criarPedido() {
   try {
-    const { valor, observacao, endereco } = yield select(state => state.pedido);
+    const { valor, observacao, endereco, forma_pagamento } = yield select(
+      state => state.pedido
+    );
     const data = yield select(state => state.pedido);
     const { items } = yield select(state => state.carrinho);
 
@@ -44,7 +46,8 @@ export function* criarPedido() {
       cep: endereco.cep,
       estado: endereco.uf,
       produtos: items,
-      valor
+      valor,
+      forma_pagamento
     });
 
     yield put(PedidoActions.pedidoResponse());

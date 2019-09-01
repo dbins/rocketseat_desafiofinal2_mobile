@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Creators as PerfilActions } from "../../store/ducks/perfil";
+import { Creators as PedidoActions } from "../../store/ducks/pedido";
 import Container from "../../components/Container";
 import Header from "../../components/Header";
 import { ScrollView } from "react-native";
@@ -13,19 +13,11 @@ import { CreditCardInput } from "react-native-credit-card-input";
 
 class Cartao extends Component {
   static propTypes = {
-    perfil: PropTypes.shape({
-      data: PropTypes.arrayOf(
-        PropTypes.shape({
-          order: PropTypes.shape({
-            id: PropTypes.number,
-            created_at: PropTypes.date,
-            valor: PropTypes.number
-          })
-        })
-      ),
-      loading: PropTypes.bool,
-      error: PropTypes.bool
-    }).isRequired
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func
+    }).isRequired,
+    pedidoRequest: PropTypes.func.isRequired,
+    setFormaPagamento: PropTypes.func.isRequired
   };
 
   state = {
@@ -58,7 +50,6 @@ class Cartao extends Component {
     const {
       cardData: { values: cardValue }
     } = this.state;
-
     const apiKey = "";
     const expMonth = cardValue.expiry.split("/")[0];
     const expYear = cardValue.expiry.split("/")[1];
@@ -71,9 +62,12 @@ class Cartao extends Component {
       address_zip: "01532001"
     };
     //Gerar o token na operadora!
-    const token = false;
+    const token = true;
     if (token) {
       //Enviar ao backend
+      const { pedidoRequest, setFormaPagamento } = this.props;
+      setFormaPagamento("CARTAO");
+      pedidoRequest();
     } else {
       //Erro!
     }
@@ -125,7 +119,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(PerfilActions, dispatch);
+  bindActionCreators(PedidoActions, dispatch);
 
 export default connect(
   mapStateToProps,

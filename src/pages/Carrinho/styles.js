@@ -1,6 +1,6 @@
-import styled from "styled-components/native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { colors, metrics } from "../../styles";
+import styled from 'styled-components/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { colors, metrics } from '../../styles';
 
 export const Content = styled.View`
   flex-direction: column;
@@ -40,4 +40,3 @@ export const Error = styled.Text`
   margin-top: 150px;
   margin-left: 20px;
 `;
-

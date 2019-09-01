@@ -3,9 +3,9 @@
  */
 
 export const Types = {
-  REQUEST: "perfil/REQUEST",
-  SUCCESS: "perfil/RESPONSE",
-  FAILURE: "perfil/FAILURE"
+  REQUEST: 'perfil/REQUEST',
+  SUCCESS: 'perfil/RESPONSE',
+  FAILURE: 'perfil/FAILURE',
 };
 
 /**
@@ -22,7 +22,7 @@ export default function perfil(state = INITIAL_STATE, action) {
         ...state,
         data: action.payload.data,
         loading: false,
-        error: false
+        error: false,
       };
     case Types.FAILURE:
       return { ...state, loading: false, error: true };
@@ -37,13 +37,13 @@ export default function perfil(state = INITIAL_STATE, action) {
 
 export const Creators = {
   perfilRequest: () => ({
-    type: Types.REQUEST
+    type: Types.REQUEST,
   }),
   perfilSuccess: data => ({
     type: Types.SUCCESS,
-    payload: { data }
+    payload: { data },
   }),
   perfilFailure: () => ({
-    type: Types.FAILURE
-  })
+    type: Types.FAILURE,
+  }),
 };

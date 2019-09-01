@@ -1,13 +1,12 @@
-import { navigate } from "../../services/navigation";
 /**
  * Action Types
  */
 
 export const Types = {
-  REQUEST: "tamanho/REQUEST",
-  SUCCESS: "tamanho/SUCCESS",
-  FAILURE: "tamanho/FAILURE",
-  SELECTED: "tamanho/SELECTED"
+  REQUEST: 'tamanho/REQUEST',
+  SUCCESS: 'tamanho/SUCCESS',
+  FAILURE: 'tamanho/FAILURE',
+  SELECTED: 'tamanho/SELECTED',
 };
 
 /**
@@ -17,7 +16,7 @@ const INITIAL_STATE = {
   productSelected: {},
   data: [],
   loading: false,
-  error: false
+  error: false,
 };
 export default function tamanhos(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -28,7 +27,7 @@ export default function tamanhos(state = INITIAL_STATE, action) {
         ...state,
         data: action.payload.data,
         loading: false,
-        error: false
+        error: false,
       };
     case Types.FAILURE:
       return { ...state, loading: false, error: true };
@@ -37,7 +36,7 @@ export default function tamanhos(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
         error: false,
-        productSelected: action.payload.data
+        productSelected: action.payload.data,
       };
     default:
       return state;
@@ -50,17 +49,17 @@ export default function tamanhos(state = INITIAL_STATE, action) {
 
 export const Creators = {
   tamanhoRequest: () => ({
-    type: Types.REQUEST
+    type: Types.REQUEST,
   }),
   tamanhoSuccess: data => ({
     type: Types.SUCCESS,
-    payload: { data }
+    payload: { data },
   }),
   tamanhoFailure: () => ({
-    type: Types.FAILURE
+    type: Types.FAILURE,
   }),
   tamanhoSelected: data => ({
     type: Types.SELECTED,
-    payload: { data }
-  })
+    payload: { data },
+  }),
 };

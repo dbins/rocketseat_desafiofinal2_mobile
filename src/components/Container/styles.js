@@ -1,6 +1,5 @@
-import { colors, metrics } from "../../styles";
-
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
+import { colors, metrics } from '../../styles';
 
 export const Content = styled.View`
   flex: 1;
@@ -13,5 +12,5 @@ export const Image = styled.Image`
   position: absolute;
 `;
 export const StatusBar = styled.StatusBar.attrs({
-  backgroundColor: "#0b2031"
+  backgroundColor: '#0b2031',
 })``;

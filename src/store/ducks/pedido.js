@@ -3,19 +3,20 @@
  */
 
 export const Types = {
-  SET_ORDER: "pedido/SET_ORDER",
-  SET_PRODUCTS: "pedido/SET_PRODUCTS",
-  SET_OBSERVATION: "pedido/SET_OBSERVATION",
-  SET_STREET: "pedido/SET_STREET",
-  SET_NUMBER: "pedido/SET_NUMBER",
-  SET_UF: "pedido/SET_UF",
-  SET_DISTRICT: "pedido/SET_DISTRICT",
-  SET_CITY: "pedido/SET_CITY",
-  CEP_REQUEST: "pedido/CEP_REQUEST",
-  CEP_RESPONSE: "pedido/CEP_RESPONSE",
-  REQUEST: "pedido/REQUEST",
-  RESPONSE: "pedido/RESPONSE",
-  FAILURE: "pedido/FAILURE"
+  SET_ORDER: 'pedido/SET_ORDER',
+  SET_PRODUCTS: 'pedido/SET_PRODUCTS',
+  SET_OBSERVATION: 'pedido/SET_OBSERVATION',
+  SET_STREET: 'pedido/SET_STREET',
+  SET_NUMBER: 'pedido/SET_NUMBER',
+  SET_UF: 'pedido/SET_UF',
+  SET_DISTRICT: 'pedido/SET_DISTRICT',
+  SET_CITY: 'pedido/SET_CITY',
+  SET_FORMA_PAGAMENTO: 'pedido/SET_FORMA_PAGAMENTO',
+  CEP_REQUEST: 'pedido/CEP_REQUEST',
+  CEP_RESPONSE: 'pedido/CEP_RESPONSE',
+  REQUEST: 'pedido/REQUEST',
+  RESPONSE: 'pedido/RESPONSE',
+  FAILURE: 'pedido/FAILURE',
 };
 
 /**
@@ -25,17 +26,18 @@ export const Types = {
 const INITIAL_STATE = {
   produtos: [],
   endereco: {
-    rua: "",
-    numero: "",
-    bairro: "teste",
-    cidade: "",
-    uf: "",
-    cep: "00000000"
+    rua: '',
+    numero: '',
+    bairro: 'teste',
+    cidade: '',
+    uf: '',
+    cep: '00000000',
   },
-  observacao: "",
+  observacao: '',
   valor: 0,
+  forma_pagamento: '',
   loading: false,
-  error: false
+  error: false,
 };
 
 export default function pedido(state = INITIAL_STATE, action) {
@@ -44,7 +46,7 @@ export default function pedido(state = INITIAL_STATE, action) {
       return {
         ...state,
         produtos: action.payload.data.produtos,
-        valor: action.payload.data.valor
+        valor: action.payload.data.valor,
       };
     case Types.SET_PRODUCTS:
       return { ...state, produtos: action.payload.data };
@@ -53,27 +55,32 @@ export default function pedido(state = INITIAL_STATE, action) {
     case Types.SET_STREET:
       return {
         ...state,
-        endereco: { ...state.endereco, rua: action.payload.data }
+        endereco: { ...state.endereco, rua: action.payload.data },
       };
     case Types.SET_NUMBER:
       return {
         ...state,
-        endereco: { ...state.endereco, numero: action.payload.data }
+        endereco: { ...state.endereco, numero: action.payload.data },
       };
     case Types.SET_CITY:
       return {
         ...state,
-        endereco: { ...state.endereco, cidade: action.payload.data }
+        endereco: { ...state.endereco, cidade: action.payload.data },
       };
     case Types.SET_DISTRICT:
       return {
         ...state,
-        endereco: { ...state.endereco, bairro: action.payload.data }
+        endereco: { ...state.endereco, bairro: action.payload.data },
+      };
+    case Types.SET_FORMA_PAGAMENTO:
+      return {
+        ...state,
+        forma_pagamento: action.payload.data,
       };
     case Types.SET_UF:
       return {
         ...state,
-        endereco: { ...state.endereco, uf: action.payload.data }
+        endereco: { ...state.endereco, uf: action.payload.data },
       };
     case Types.CEP_REQUEST:
       return { ...state, loading: true };
@@ -99,47 +106,51 @@ export default function pedido(state = INITIAL_STATE, action) {
 export const Creators = {
   setProdutos: data => ({
     type: Types.SET_PRODUCTS,
-    payload: { data }
+    payload: { data },
   }),
   setObservacao: data => ({
     type: Types.SET_OBSERVATION,
-    payload: { data }
+    payload: { data },
   }),
   setRua: data => ({
     type: Types.SET_STREET,
-    payload: { data }
+    payload: { data },
   }),
   setNumero: data => ({
     type: Types.SET_NUMBER,
-    payload: { data }
+    payload: { data },
   }),
   setCidade: data => ({
     type: Types.SET_CITY,
-    payload: { data }
+    payload: { data },
   }),
   setBairro: data => ({
     type: Types.SET_DISTRICT,
-    payload: { data }
+    payload: { data },
   }),
   setUF: data => ({
     type: Types.SET_UF,
-    payload: { data }
+    payload: { data },
+  }),
+  setFormaPagamento: data => ({
+    type: Types.SET_FORMA_PAGAMENTO,
+    payload: { data },
   }),
   cepRequest: cep => ({
     type: Types.CEP_REQUEST,
-    payload: { cep }
+    payload: { cep },
   }),
   cepResponse: data => ({
     type: Types.CEP_RESPONSE,
-    payload: { data }
+    payload: { data },
   }),
   pedidoRequest: () => ({
-    type: Types.REQUEST
+    type: Types.REQUEST,
   }),
   pedidoResponse: () => ({
-    type: Types.RESPONSE
+    type: Types.RESPONSE,
   }),
   pedidoFailure: () => ({
-    type: Types.FAILURE
-  })
+    type: Types.FAILURE,
+  }),
 };

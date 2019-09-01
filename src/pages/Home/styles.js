@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
-import { colors, metrics } from "../../styles";
+import styled from 'styled-components/native';
+import { colors, metrics } from '../../styles';
 
 export const Loading = styled.ActivityIndicator`
   margin-top: ${metrics.baseMargin * 2};

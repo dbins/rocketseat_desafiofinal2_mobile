@@ -1,14 +1,14 @@
-import { navigate } from "../../services/navigation";
+import { navigate } from '../../services/navigation';
 
 /**
  * ACTION TYPES
  */
 
 export const Types = {
-  REQUEST: "product/REQUEST",
-  SUCCESS: "product/SUCCESS",
-  FAILURE: "product/FAILURE",
-  SELECTED: "product/SELECTED"
+  REQUEST: 'product/REQUEST',
+  SUCCESS: 'product/SUCCESS',
+  FAILURE: 'product/FAILURE',
+  SELECTED: 'product/SELECTED',
 };
 
 /**
@@ -19,7 +19,7 @@ const INITIAL_STATE = {
   productSelected: {},
   data: [],
   loading: false,
-  error: false
+  error: false,
 };
 
 export default function produto(state = INITIAL_STATE, action) {
@@ -31,17 +31,17 @@ export default function produto(state = INITIAL_STATE, action) {
         ...state,
         data: action.payload.data,
         loading: false,
-        error: false
+        error: false,
       };
     case Types.FAILURE:
       return { ...state, loading: false, error: true };
     case Types.SELECTED:
-      navigate("Tipos");
+      navigate('Tipos');
       return {
         ...state,
         loading: false,
         error: false,
-        productSelected: action.payload.data
+        productSelected: action.payload.data,
       };
     default:
       return state;
@@ -54,17 +54,17 @@ export default function produto(state = INITIAL_STATE, action) {
 
 export const Creators = {
   productRequest: () => ({
-    type: Types.REQUEST
+    type: Types.REQUEST,
   }),
   productSuccess: data => ({
     type: Types.SUCCESS,
-    payload: { data }
+    payload: { data },
   }),
   productFailure: () => ({
-    type: Types.FAILURE
+    type: Types.FAILURE,
   }),
   productSelected: data => ({
     type: Types.SELECTED,
-    payload: { data }
-  })
+    payload: { data },
+  }),
 };

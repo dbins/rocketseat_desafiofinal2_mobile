@@ -1,6 +1,6 @@
-import styled from "styled-components/native";
-import { colors, metrics } from "../../styles";
-import Button from "../../components/Botao";
+import styled from 'styled-components/native';
+import { colors, metrics } from '../../styles';
+import Button from '../../components/Botao';
 
 export const Content = styled.View`
   flex-direction: column;
@@ -9,7 +9,7 @@ export const Content = styled.View`
 `;
 
 export const Input = styled.TextInput.attrs({
-  placeholderTextColor: colors.regular
+  placeholderTextColor: colors.regular,
 })`
   background: ${colors.white};
   border-radius: ${metrics.baseRadius * 2};
@@ -48,8 +48,8 @@ export const ButtonOrder = styled(Button)`
 `;
 
 export const Loading = styled.ActivityIndicator.attrs({
-  size: "small",
-  color: colors.white
+  size: 'small',
+  color: colors.white,
 })``;
 
 export const Error = styled.Text`

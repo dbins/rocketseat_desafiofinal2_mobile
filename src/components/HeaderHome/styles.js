@@ -1,8 +1,7 @@
-import { colors, metrics } from "../../styles";
-
-import styled from "styled-components/native";
-import { getStatusBarHeight } from "react-native-status-bar-height";
-import Icon from "react-native-vector-icons/FontAwesome";
+import styled from 'styled-components/native';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { colors, metrics } from '../../styles';
 
 export const Content = styled.View`
   height: ${54 + getStatusBarHeight()};

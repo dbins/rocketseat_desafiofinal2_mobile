@@ -1,7 +1,6 @@
-import { colors, metrics } from "../../styles";
-
-import styled from "styled-components/native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import styled from 'styled-components/native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { colors, metrics } from '../../styles';
 
 export const Container = styled.TouchableOpacity`
   height: 50;

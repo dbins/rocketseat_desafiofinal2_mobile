@@ -3,9 +3,9 @@
  */
 
 export const Types = {
-  REQUEST: "cadastro/REQUEST",
-  SUCCESS: "cadastro/SUCCESS",
-  FAILURE: "cadastro/FAILURE"
+  REQUEST: 'cadastro/REQUEST',
+  SUCCESS: 'cadastro/SUCCESS',
+  FAILURE: 'cadastro/FAILURE',
 };
 
 /**
@@ -16,7 +16,7 @@ const INITIAL_STATE = {
   user: {},
   loading: false,
   msg_error: false,
-  error: false
+  error: false,
 };
 
 export default function cadastro(state = INITIAL_STATE, action) {
@@ -39,12 +39,12 @@ export default function cadastro(state = INITIAL_STATE, action) {
 export const Creators = {
   cadastroRequest: user => ({
     type: Types.REQUEST,
-    payload: { user }
+    payload: { user },
   }),
   cadastroSuccess: () => ({
-    type: Types.SUCCESS
+    type: Types.SUCCESS,
   }),
   cadastroFailure: () => ({
-    type: Types.FAILURE
-  })
+    type: Types.FAILURE,
+  }),
 };

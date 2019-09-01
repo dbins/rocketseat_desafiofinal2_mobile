@@ -25,8 +25,8 @@ Neste aplicativo foi utilizado o React Native CLI, estilização através de Sty
 - git clone https://github.com/dbins/rocketseat_desafiofinal2_mobile
 - npm install
 - Ative o backend junto com a fila de disparos de e-mails (Redis)
-- Edite o arquivo /services/api.js e insira o endereço de IP da API
-- Edite o arquivo /services/config/ReactotronConfig.js e informe o seu IP local. Essa etapa é opcional, é apenas para quem for testar a aplicação usando o Reactotron.
+- Edite o arquivo /src/services/api.js e insira o endereço de IP da API
+- Edite o arquivo /src/config/ReactotronConfig.js e informe o seu IP local. Essa etapa é opcional, é apenas para quem for testar a aplicação usando o Reactotron.
 - Abra o emulador. Os testes foram feitos no Windows 10 utilizando o emulador Genymotion (Android)
 - react-native run-android
 
@@ -50,3 +50,45 @@ Para gerar o APK, a partir do terminal, dentro da pasta do projeto, faça o segu
 
 - cd android
 - gradlew assembleDebug (para gerar a versão de testes) ou gradlew assembleRelease (para gerar a versão para enviar para a PlayStore)
+
+## Configuração React Native
+
+### Instalação ESLINT
+O ESLint é uma ferramenta de lint plugável para JavaScript e JSX;
+
+npm install eslint --save-dev
+npx eslint --init
+
+Instalação dos plugis ESLint
+
+npm install eslint-config-airbnb --save-dev
+npm install eslint-plugin-import --save-dev
+npm install eslint-plugin-jsx-a11y --save-dev
+npm install eslint-plugin-react --save-dev
+npm install eslint-plugin-react --save-dev
+npm install --save-dev eslint-plugin-import eslint-import-resolver-babel-root-import
+npm install babel-plugin-root-import --save-dev (para permitir que os caminhos dos imports e includes sejam relativos a raiz do projeto)
+
+### Instalação Prettier
+O Prettier atualiza seu código automaticamente seguindo os padrões que você quiser toda vez salva o arquivo;
+
+npm install --save-dev --save-exact prettier
+
+Instalação integração Prettier x ESLint
+npm install --save-dev eslint-plugin-prettier
+npm install --save-dev eslint-config-prettier
+npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
+
+### Editor Config
+O EditorConfig é um formatador de arquivos e coleções em forma de Plugin para Editores de código/texto com o objetivo de manter um padrão de código consistente entre diferentes editores, IDE's ou ambientes;
+
+### Configurações
+
+As configurações destes 3 recursos ficam disponíveis na raiz do projeto.
+
+editorconfig - Arquivo destinado à configuração do plugin Editor Config, que padroniza algumas configurações para o editor em diferentes ambientes;
+
+.eslintrc.json - Arquivo de configuração do ESLint, é nele que são inseridas as regras e configurações de Linting do projeto, tal como a configuração do Resolver para o Babel Plugin Root Import e configuração da variável global __DEV__;
+
+babel.config.js - Arquivo de configuração do Babel, é nele que é configurado o Babel Plugin Root Import para aceitar imports absolutos na aplicação usando o diretório src como raiz;
+

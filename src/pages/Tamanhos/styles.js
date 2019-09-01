@@ -1,6 +1,5 @@
-import { metrics, colors } from "../../styles";
-
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
+import { metrics, colors } from '../../styles';
 
 export const Content = styled.View`
   padding: 0 ${metrics.basePadding / 2}px;

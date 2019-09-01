@@ -6,6 +6,21 @@ import { bindActionCreators } from "redux";
 import { Creators as LoginActions } from "../../store/ducks/login";
 import validacao from "../../util";
 import {
+  googleSignIn,
+  googleGetCurrentUser,
+  googleSignOut,
+  googleRevokeAccess
+} from "../../services/google";
+import {
+  LoginButton,
+  LoginManager,
+  AccessToken,
+  GraphRequest,
+  GraphRequestManager
+} from "react-native-fbsdk";
+import { facebookLogin } from "../../services/facebook";
+import DeviceInfo from "react-native-device-info";
+import {
   ImageBackground,
   Container,
   ContainerLogo,
@@ -20,12 +35,22 @@ import {
 import BackgroundLogin from "../../assets/background_login.png";
 import ImageLogo from "../../assets/logo.png";
 
+// Recurso nao testado
+// <Button onPress={this.login_google}>
+// {this.state.loading_google ? (
+// <Loading />
+// ) : (
+//   <Text>Login com Google</Text>
+// )}
+// </Button>
+
 class Login extends Component {
   static propTypes = {
     navigation: PropTypes.shape({
       navigate: PropTypes.func
     }).isRequired,
     loginRequest: PropTypes.func.isRequired,
+    loginRequestSocial: PropTypes.func.isRequired,
     login: PropTypes.shape({
       loading: PropTypes.bool,
       error: PropTypes.bool
@@ -34,7 +59,14 @@ class Login extends Component {
 
   state = {
     email: "",
-    password: ""
+    password: "",
+    username: "",
+    error: "",
+    user: null,
+    social_id: null,
+    social_origem: null,
+    loading_google: false,
+    loading_facebook: false
   };
 
   cadastro = () => {
@@ -58,12 +90,80 @@ class Login extends Component {
     }
     if (continuar) {
       const origin = "MOBILE";
-      loginRequest({ email, password, origin });
+      const api = DeviceInfo.getAPILevel();
+      const marca = DeviceInfo.getBrand();
+      const sistema = DeviceInfo.getSystemName();
+      const versao = DeviceInfo.getSystemVersion();
+      loginRequest({ email, password, origin, api, marca, sistema, versao });
     } else {
       Alert.alert("LOGIN", mensagem, [{ text: "FECHAR" }], {
         cancelable: false
       });
     }
+  };
+
+  autenticar_social = () => {
+    console.tron.log("estou aqui");
+    const { loginRequestSocial } = this.props;
+    const { username, email, social_origem, social_id } = this.state;
+    const origin = "MOBILE";
+    const api = DeviceInfo.getAPILevel();
+    const marca = DeviceInfo.getBrand();
+    const sistema = DeviceInfo.getSystemName();
+    const versao = DeviceInfo.getSystemVersion();
+    this.setState({ loading_facebook: false, loading_google: false });
+    loginRequestSocial({
+      username,
+      email,
+      social_origem,
+      social_id,
+      origin,
+      api,
+      marca,
+      sistema,
+      versao
+    });
+  };
+
+  login_facebook = async () => {
+    this.setState({ loading_facebook: true, loading: false });
+    const response = await facebookLogin();
+    if (response.error) {
+      //Se o tipo do erro foi token expirado, chamar de novo a rotina para gerar um token novo
+
+      this.setState({ error: response.error, loading: false });
+      return false;
+    }
+
+    this.setState({
+      user: response.user,
+      loading: false,
+      error: "",
+      social_id: response.user.id,
+      email: response.user.email,
+      username: response.user.name,
+      social_origem: "FACEBOOK"
+    });
+    this.autenticar_social();
+  };
+
+  login_google = async () => {
+    this.setState({ loading_google: true, loading: false });
+    const response = await googleSignIn();
+    if (response.error) {
+      this.setState({ error: response.error, loading: false });
+      return false;
+    }
+    this.setState({
+      user: response.user,
+      loading: false,
+      error: "",
+      social_id: response.user.id,
+      email: response.user.email,
+      username: response.user.name,
+      social_origem: "GOOGLE"
+    });
+    this.autenticar_social();
   };
 
   render() {
@@ -99,6 +199,16 @@ class Login extends Component {
             <LinkText onPress={this.cadastro}>
               <Text>Criar conta gratuita</Text>
             </LinkText>
+
+            <Button onPress={this.login_facebook}>
+              {this.state.loading_facebook ? (
+                <Loading />
+              ) : (
+                <Text>Login com Facebook</Text>
+              )}
+            </Button>
+
+
 
             {login.error && (
               <LinkText>

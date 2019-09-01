@@ -1,17 +1,15 @@
-import {
-  createAppContainer,
-  createSwitchNavigator,
-  createStackNavigator
-} from "react-navigation";
+import { createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
 
-import Login from "./pages/Login";
-import Cadastro from "./pages/Cadastro";
-import Home from "./pages/Home";
-import Tipos from "./pages/Tipos";
-import Tamanhos from "./pages/Tamanhos";
-import Carrinho from "./pages/Carrinho";
-import Finalizar from "./pages/Finalizar";
-import Perfil from "./pages/Perfil";
+import Login from './pages/Login';
+import Cadastro from './pages/Cadastro';
+import Home from './pages/Home';
+import Tipos from './pages/Tipos';
+import Tamanhos from './pages/Tamanhos';
+import Carrinho from './pages/Carrinho';
+import Finalizar from './pages/Finalizar';
+import Perfil from './pages/Perfil';
+import Pagamento from './pages/Pagamento';
+import Cartao from './pages/Pagamento/cartao';
 
 const AppStack = createStackNavigator(
   {
@@ -20,31 +18,33 @@ const AppStack = createStackNavigator(
     Tamanhos,
     Carrinho,
     Finalizar,
-    Perfil
+    Perfil,
+    Pagamento,
+    Cartao,
   },
   {
-    headerMode: "none"
-  }
+    headerMode: 'none',
+  },
 );
 const AuthStack = createStackNavigator(
   {
-    Login: Login,
-    Cadastro: Cadastro
+    Login,
+    Cadastro,
   },
   {
-    headerMode: "none"
-  }
+    headerMode: 'none',
+  },
 );
 
 const Routes = createAppContainer(
   createSwitchNavigator(
     {
       App: AppStack,
-      Auth: AuthStack
+      Auth: AuthStack,
     },
     {
-      initialRouteName: "Auth"
-    }
-  )
+      initialRouteName: 'Auth',
+    },
+  ),
 );
 export default Routes;
