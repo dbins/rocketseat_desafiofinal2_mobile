@@ -7,6 +7,7 @@ export const Types = {
   SUCCESS: 'login/SUCCESS',
   FAILURE: 'login/FAILURE',
   REQUEST_SOCIAL: 'login/REQUEST_SOCIAL',
+  LOGOUT: 'login/LOGOUT',
 };
 
 /**
@@ -27,6 +28,9 @@ export default function login(state = INITIAL_STATE, action) {
 
     case Types.FAILURE:
       return { ...state, loading: false, error: true };
+	  
+	 case Types.LOGOUT:
+      return { ...state, loading: false, error: false };  
 
     default:
       return state;
@@ -51,5 +55,8 @@ export const Creators = {
   }),
   loginFailure: () => ({
     type: Types.FAILURE,
+  }),
+  logout: () => ({
+    type: Types.LOGOUT,
   }),
 };

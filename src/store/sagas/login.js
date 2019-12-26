@@ -1,7 +1,7 @@
 import { call, put } from "redux-saga/effects";
 import api from "../../services/api";
 import { navigate } from "../../services/navigation";
-import { OnLogin } from "../../services/token";
+import { OnLogin, onLogout, onLogoutFacebook } from "../../services/token";
 
 import { Creators as LoginActions } from "../ducks/login";
 
@@ -14,7 +14,8 @@ export function* login(action) {
 
     yield put(LoginActions.loginSuccess());
 
-    navigate("Home");
+    //navigate("Home");
+	navigate("Inicial");
   } catch (err) {
     yield put(LoginActions.loginFailure());
   }
@@ -29,8 +30,16 @@ export function* login_social(action) {
 
     yield put(LoginActions.loginSuccess());
 
-    navigate("Home");
+    //navigate("Home");
+	navigate("Inicial");
   } catch (err) {
     yield put(LoginActions.loginFailure());
   }
+}
+
+
+export function* logout() {
+  onLogout();
+  onLogoutFacebook();
+  navigate("Login");
 }

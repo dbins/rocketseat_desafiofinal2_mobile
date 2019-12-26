@@ -61,6 +61,8 @@ export const googleSignOut = async () => {
   try {
     await GoogleSignin.revokeAccess();
     await GoogleSignin.signOut();
+  } catch(err){
+	//Tratar o erro  
   }
   return retorno;
 };
@@ -69,5 +71,7 @@ export const googleRevokeAccess = async () => {
   // Remove your application from the user authorized applications.
   try {
     await GoogleSignin.revokeAccess();
+  } catch(err){
+	//Tratar o erro  
   }
 };

@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
-import { ScrollView, TouchableOpacity } from "react-native";
+import { ScrollView, TouchableOpacity, View, Text, Image, Button } from "react-native";
 import { Creators as TiposActions } from "../../store/ducks/tipos";
 import Container from "../../components/Container";
 import Header from "../../components/Header";
-import { Content, Loading, Error } from "./styles";
+import { Content, Loading, Error, ModalContainer, ModalImage, ModalTitle, ModalContent } from "./styles";
 import ListItem from "../../components/ItemLista";
-
+import Modal from 'react-native-modal';
 class Tipos extends Component {
   static propTypes = {
     navigation: PropTypes.shape({
@@ -30,15 +30,37 @@ class Tipos extends Component {
     }).isRequired,
     tiposSelected: PropTypes.func.isRequired
   };
+  
+  state = {
+      isModalVisible: false,
+      item: {
+		  titulo: '',
+		  descricao: '',
+		  file: {
+			  url: ''
+		  }
+	  },
+    };
+	
+  toggleModal = item => {
+    this.setState({item: item});
+	this.setState({isModalVisible: !this.state.isModalVisible});
+  }
+	
 
   listarProdutos = () => {
     const { tipos, tiposSelected } = this.props;
     return (
       <Content>
         {tipos.data.map(item => (
-          <TouchableOpacity key={item.id} onPress={() => tiposSelected(item)}>
+          <View key={item.id} style={{marginBottom: 20}}>
+		  <TouchableOpacity onPress={() => tiposSelected(item)}>
             <ListItem titulo={item.titulo} uri={item.file.url} />
           </TouchableOpacity>
+		  <TouchableOpacity style={{zIndex: 5, marginTop: -30}}onPress={() => this.toggleModal(item)}>
+		  <Text style={{paddingLeft:50,fontWeight: "bold", color:"#FF0000"}}>Detalhes...</Text>
+		  </TouchableOpacity>
+		  </View>
         ))}
         {tipos.data.length == 0 && (
           <Error>Não existem produtos deste tipo</Error>
@@ -68,6 +90,16 @@ class Tipos extends Component {
         <ScrollView>
           {tipos.loading ? <Loading /> : this.listarProdutos()}
         </ScrollView>
+		<Modal isVisible={this.state.isModalVisible}>
+          <ModalContainer>
+            <ModalImage source={{uri: this.state.item.file.url}}  style={{width:300,height:250}}/>
+			<ModalTitle>{this.state.item.titulo}</ModalTitle>
+			<ModalContent>{this.state.item.descricao}</ModalContent>
+            <Button onPress={() => this.toggleModal(this.state.item)}
+              title="Fechar"
+            />
+          </ModalContainer>
+        </Modal>
       </Container>
     );
   }

@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 
 import { Container, Image, InfoContent, Titulo, Valor } from "./styles";
 
-const ListItem = ({ titulo, uri, valor }) => (
+const ListItem = ({ titulo, uri, valor}) => (
   <Container>
     <Image source={{ uri }} />
     <InfoContent>
       <Titulo>{titulo}</Titulo>
       {valor ? <Valor>R$ {valor}</Valor> : null}
-    </InfoContent>
+	  
+	  </InfoContent>
   </Container>
 );
 

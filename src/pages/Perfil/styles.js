@@ -26,6 +26,7 @@ export const Error = styled.Text`
 export const Title = styled.Text`
   color: ${colors.primary};
   margin-top: ${metrics.baseMargin};
+  margin-bottom: ${metrics.baseMargin};
 `;
 
 export const Value = styled.Text`

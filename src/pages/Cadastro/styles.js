@@ -20,8 +20,8 @@ export const ContainerLogo = styled.View`
 `;
 
 export const Logo = styled.Image`
-  width: 72px;
-  height: 72px;
+  width: 172px;
+  height: 172px;
 `;
 
 export const Form = styled.View``;

@@ -17,6 +17,7 @@ export const Title = styled.Text`
   font-size: 18;
   font-weight: bold;
   color: ${colors.white};
+  width: ${metrics.screenWidth*0.50};
 `;
 
 export const History = styled(Icon)`

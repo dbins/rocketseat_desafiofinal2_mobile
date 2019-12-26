@@ -10,9 +10,9 @@ import { Types as PerfilTypes } from '../ducks/perfil';
 import { Types as PedidoTypes } from '../ducks/pedido';
 
 import { cadastro } from './cadastro';
-import { login, login_social } from './login';
+import { login, login_social, logout } from './login';
 import { categorias } from './produto';
-import { produtosTipo } from './tipos';
+import { produtosTipo, searchProducts } from './tipos';
 import { produtosTamanho, adicionarCarrinho } from './tamanhos';
 import { adicionarPedido } from './carrinho';
 import { pedidosUsuario } from './perfil';
@@ -23,12 +23,15 @@ export default function* rootSaga() {
     takeLatest(CadastroTypes.REQUEST, cadastro),
 
     takeLatest(LoginTypes.REQUEST, login),
+	takeLatest(LoginTypes.LOGOUT, logout),
 
     takeLatest(LoginTypes.REQUEST_SOCIAL, login_social),
 
     takeLatest(ProdutoTypes.REQUEST, categorias),
 
     takeLatest(TiposTypes.REQUEST, produtosTipo),
+	
+	takeLatest(TiposTypes.SEARCH_REQUEST, searchProducts),
 
     takeLatest(TamanhoTypes.REQUEST, produtosTamanho),
 

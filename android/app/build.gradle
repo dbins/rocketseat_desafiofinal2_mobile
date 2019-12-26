@@ -20,6 +20,8 @@ import com.android.build.OutputFile
  *
  *   // whether to bundle JS and assets in debug mode
  *   bundleInDebug: false,
+	 bundleInStaging: true,
+     bundleInInternalTest: true, 
  *
  *   // whether to bundle JS and assets in release mode
  *   bundleInRelease: true,
@@ -73,8 +75,12 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js"
+    entryFile: "index.js",
+	enableHermes: true
 ]
+
+def jscFlavor = 'org.webkit:android-jsc:+'
+def enableHermes = project.ext.react.get("enableHermes", false);
 
 apply from: "../../node_modules/react-native/react.gradle"
 
@@ -94,6 +100,14 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
+	packagingOptions {
+       pickFirst 'lib/x86/libc++_shared.so'
+       pickFirst 'lib/x86_64/libjsc.so'
+       pickFirst 'lib/arm64-v8a/libjsc.so'
+       pickFirst 'lib/arm64-v8a/libc++_shared.so'
+       pickFirst 'lib/x86_64/libc++_shared.so'
+       pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+   }
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     compileOptions {
@@ -149,6 +163,13 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-webview')
+	if (enableHermes) {
+       def hermesPath = "../../node_modules/hermesvm/android/";
+       debugImplementation files(hermesPath + "hermes-debug.aar")
+       releaseImplementation files(hermesPath + "hermes-release.aar")
+    }
+   else { implementation jscFlavor }
     implementation project(':react-native-device-info')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-gesture-handler')

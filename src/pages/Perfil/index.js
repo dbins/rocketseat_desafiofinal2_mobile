@@ -34,7 +34,7 @@ class Perfil extends Component {
 
   paginaInicial = () => {
     const { navigation } = this.props;
-    navigation.navigate("Home");
+    navigation.navigate("Inicial");
   };
 
   render() {

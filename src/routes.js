@@ -11,9 +11,25 @@ import Perfil from './pages/Perfil';
 import Pagamento from './pages/Pagamento';
 import Cartao from './pages/Pagamento/cartao';
 
+import Inicial from './pages/Inicial';
+import Fotos from './pages/Fotos';
+import Redes from './pages/Redes';
+import Avisos from './pages/Avisos';
+import Pizzaria from './pages/Pizzaria';
+import Mapa from './pages/Mapa';
+import Pesquisa from './pages/Pesquisa';
+
+
 const AppStack = createStackNavigator(
   {
-    Home,
+	Inicial,
+	Fotos,
+	Redes,
+	Avisos,
+	Pizzaria,
+	Mapa,
+	Pesquisa,
+	Home,
     Tipos,
     Tamanhos,
     Carrinho,

@@ -7,8 +7,8 @@ export const ImageBackground = styled.ImageBackground`
 `;
 
 export const Logo = styled.Image`
-  width: 72px;
-  height: 72px;
+  width: 172px;
+  height: 172px;
 `;
 
 export const Container = styled.View`

@@ -33,7 +33,7 @@ import {
   Loading
 } from "./styles";
 import BackgroundLogin from "../../assets/background_login.png";
-import ImageLogo from "../../assets/logo.png";
+import ImageLogo from "../../assets/don_juan_logo_big.png";
 
 // Recurso nao testado
 // <Button onPress={this.login_google}>
@@ -201,11 +201,7 @@ class Login extends Component {
             </LinkText>
 
             <Button onPress={this.login_facebook}>
-              {this.state.loading_facebook ? (
-                <Loading />
-              ) : (
                 <Text>Login com Facebook</Text>
-              )}
             </Button>
 
 

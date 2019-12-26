@@ -18,7 +18,7 @@ import {
   Loading
 } from "./styles";
 import BackgroundLogin from "../../assets/background_login.png";
-import ImageLogo from "../../assets/logo.png";
+import ImageLogo from "../../assets/don_juan_logo_big.png";
 
 class Cadastro extends Component {
   static propTypes = {

@@ -20,3 +20,24 @@ export const Error = styled.Text`
   margin-top: 150px;
   margin-left: 20px;
 `;
+
+export const ModalContainer = styled.View`
+   background-color: #FFFFFF;
+   padding: 20px;
+`;
+
+export const ModalImage = styled.Image`
+   width: 350px;
+   height: 250px;
+`;
+
+export const ModalTitle = styled.Text`
+  font-size: 20px;
+  font-weight: bold;
+  color: ${colors.black};
+`;
+
+export const ModalContent = styled.Text`
+  font-size: 16px;
+  color: ${colors.black};
+`;
